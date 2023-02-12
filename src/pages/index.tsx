@@ -18,20 +18,14 @@ export default function Home() {
 			<div className='p-2' />
 			<div className='border rounded p-8 flex justify-between max-w-2xl items-center'>
 				<div className='w-64 h-64 flex flex-col'>
-					<img
-						src={firstPokemon.data!.sprites.front_default!}
-						className='w-full'
-					/>
+					<img src={firstPokemon.data!.sprite!} className='w-full' />
 					<div className='text-center text-xl capitalize mt-[-2rem]'>
 						{firstPokemon.data?.name}
 					</div>
 				</div>
 				<div className='p-8'>Vs</div>
 				<div className='w-64 h-64 flex flex-col'>
-					<img
-						src={secondPokemon.data!.sprites.front_default!}
-						className='w-full'
-					/>
+					<img src={secondPokemon.data!.sprite!} className='w-full' />
 					<div className='text-center text-xl capitalize mt-[-2rem]'>
 						{secondPokemon.data?.name}
 					</div>
