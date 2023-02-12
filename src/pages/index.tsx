@@ -1,4 +1,12 @@
+import { trpc } from '@/utils/trpc';
+
 export default function Home() {
+	const hello = trpc.hello.useQuery({ text: 'Basti' });
+
+	if (!hello.data) return <div>Loading...</div>;
+
+	return <div>{hello.data.greeting}</div>;
+
 	return (
 		<div className='h-screen w-screen flex flex-col justify-center items-center'>
 			<div className=' text-2xl text-center'>Which Pokémon is Rounder?</div>
