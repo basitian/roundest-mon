@@ -61,7 +61,7 @@ const PokemonListing: React.FC<{
 		<div className='flex flex-col'>
 			<Image
 				alt={props.pokemon.name}
-				src={props.pokemon.sprite!}
+				src={props.pokemon.spriteUrl}
 				width={256}
 				height={256}
 			/>
