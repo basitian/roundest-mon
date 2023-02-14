@@ -3,6 +3,8 @@ import { getOptionsForVote } from '@/utils/getRandomPokemon';
 import { trpc } from '@/utils/trpc';
 import { RouterOutput } from './api/trpc/[trpc]';
 
+import Image from 'next/image';
+
 export default function Home() {
 	const [ids, setIds] = useState(() => getOptionsForVote());
 
@@ -57,7 +59,12 @@ const PokemonListing: React.FC<{
 }> = (props) => {
 	return (
 		<div className='flex flex-col'>
-			<img src={props.pokemon.sprite!} className='w-64 h-64' />
+			<Image
+				alt={props.pokemon.name}
+				src={props.pokemon.sprite!}
+				width={256}
+				height={256}
+			/>
 			<div className='text-center text-xl capitalize mt-[-2rem]'>
 				{props.pokemon.name}
 			</div>
