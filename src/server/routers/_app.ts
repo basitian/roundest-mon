@@ -12,8 +12,9 @@ export const appRouter = router({
 			})
 		)
 		.query(async ({ input }) => {
-			const api = new PokemonClient();
-			const pokemon = await api.getPokemonById(input.id);
+			const pokeApiClient = new PokemonClient();
+			const pokemon = await pokeApiClient.getPokemonById(input.id);
+
 			return { name: pokemon.name, sprite: pokemon.sprites.front_default };
 		}),
 	castVote: procedure
