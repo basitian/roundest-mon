@@ -4,6 +4,7 @@ import { trpc } from '@/utils/trpc';
 import { RouterOutput } from './api/trpc/[trpc]';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
 	const [ids, setIds] = useState(() => getOptionsForVote());
@@ -25,7 +26,7 @@ export default function Home() {
 	}
 
 	return (
-		<div className='h-screen w-screen flex flex-col justify-center items-center'>
+		<div className='h-screen w-screen flex flex-col justify-center items-center relative'>
 			<div className=' text-2xl text-center'>Which Pokémon is Rounder?</div>
 			<div className='p-2' />
 			<div className='border rounded p-8 flex justify-between max-w-2xl items-center'>
@@ -46,6 +47,11 @@ export default function Home() {
 						</>
 					)}
 				<div className='p-2' />
+			</div>
+			<div className='absolute bottom-0 w-full text-xl text-center pb-2'>
+				<a href='https://github.com/basitian/roundest-mon'>Github</a>
+				{' | '}
+				<Link href='/results'>Results</Link>
 			</div>
 		</div>
 	);
