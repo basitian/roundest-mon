@@ -25,30 +25,34 @@ export default function Home() {
 		setIds(getOptionsForVote());
 	}
 
+	const dataLoaded =
+		!firstPokemon.isLoading &&
+		firstPokemon.data &&
+		!secondPokemon.isLoading &&
+		secondPokemon.data;
+
 	return (
-		<div className='h-screen w-screen flex flex-col justify-center items-center relative'>
-			<div className=' text-2xl text-center'>Which Pokémon is Rounder?</div>
-			<div className='p-2' />
-			<div className='border rounded p-8 flex justify-between max-w-2xl items-center'>
-				{!firstPokemon.isLoading &&
-					firstPokemon.data &&
-					!secondPokemon.isLoading &&
-					secondPokemon.data && (
-						<>
-							<PokemonListing
-								pokemon={firstPokemon.data}
-								vote={() => voteForRoundest(first)}
-							/>
-							<div className='p-8 text-2xl'>Vs</div>
-							<PokemonListing
-								pokemon={secondPokemon.data}
-								vote={() => voteForRoundest(second)}
-							/>
-						</>
-					)}
-				<div className='p-2' />
+		<div className='h-screen w-screen flex flex-col justify-between items-center relative'>
+			<div className=' text-2xl text-center pt-8'>
+				Which Pokémon is Rounder?
 			</div>
-			<div className='absolute bottom-0 w-full text-xl text-center pb-2'>
+			{dataLoaded && (
+				<div className='border rounded p-8 flex justify-between max-w-2xl items-center'>
+					<PokemonListing
+						pokemon={firstPokemon.data}
+						vote={() => voteForRoundest(first)}
+					/>
+					<div className='p-8 text-2xl'>Vs</div>
+					<PokemonListing
+						pokemon={secondPokemon.data}
+						vote={() => voteForRoundest(second)}
+					/>
+
+					<div className='p-2' />
+				</div>
+			)}
+			{!dataLoaded && <img src='/rings.svg' className='w-40' />}
+			<div className='bottom-0 w-full text-xl text-center pb-2'>
 				<a href='https://github.com/basitian/roundest-mon'>Github</a>
 				{' | '}
 				<Link href='/results'>Results</Link>
